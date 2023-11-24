@@ -65,9 +65,9 @@ def test():
 #メッセージを送信する。
 @app.route("/reminder",methods=["POST"])
 def reminder():
+    data= json.loads(request.get_data(as_text=True))
+    print(f"data:{data}\ntype{type(data)}")
     try:
-        data= json.loads(request.get_data(as_text=True))
-        print(f"data:{data}\ntype{type(data)}")
         msg = data["msg"]
         line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
         messages=TextSendMessage(text=msg)
