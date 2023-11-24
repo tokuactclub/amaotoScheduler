@@ -66,7 +66,7 @@ def test():
 @app.route("/reminder",methods=["POST"])
 def reminder():
     try:
-        data= json.loads(request.get_data())
+        data= json.loads(request.get_data(as_text=True))
         print(f"data:{data}\ntype{type(data)}")
         msg = data["data"]["msg"]
         line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
