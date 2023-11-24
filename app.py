@@ -51,6 +51,14 @@ def callback():
 
     return 'OK'
 
+
+@app.route("/test")
+def reminder():
+    msg = "test"
+    line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
+    messages=TextSendMessage(text=msg)
+    line_bot_api.broadcast(messages=messages)#細かいの面倒くさいので、ブロードキャストで作成。想定はグループに追加するだけ。個人使用は考えない。
+
 #メッセージを送信する。
 @app.route("/reminder",methods=["POST"])
 def reminder():
