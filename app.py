@@ -65,7 +65,9 @@ def test():
 #メッセージを送信する。
 @app.route("/reminder",methods=["POST"])
 def reminder():
-    data= json.loads(request.get_data(as_text=True))
+    dataa=request.get_data(as_text=True)
+    print(f"data:{dataa}\ntype{type(dataa)}")
+    data= json.loads(dataa)
     print(f"data:{data}\ntype{type(data)}")
     try:
         msg = data["msg"]
