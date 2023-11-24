@@ -64,10 +64,15 @@ def test():
 #メッセージを送信する。
 @app.route("/reminder",methods=["POST"])
 def reminder():
-    msg = request.data["msg"]
-    line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
-    messages=TextSendMessage(text=msg)
-    line_bot_api.broadcast(messages=messages)#細かいの面倒くさいので、ブロードキャストで作成。想定はグループに追加するだけ。個人使用は考えない。
+    try:
+        msg = request.data["msg"]
+        line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
+        messages=TextSendMessage(text=msg)
+        line_bot_api.broadcast(messages=messages)#細かいの面倒くさいので、ブロードキャストで作成。想定はグループに追加するだけ。個人使用は考えない。
+        return "ok"
+    except Exception as e:
+        return str(e)
+
 
 #使わないが、今後のために残す
 @handler.add(MessageEvent, message=TextMessageContent)
