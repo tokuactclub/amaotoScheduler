@@ -66,7 +66,7 @@ def test():
 @app.route("/reminder",methods=["POST"])
 def reminder():
     try:
-        msg = json.load(request.data)["msg"]
+        msg = json.load(request.data)["data"]["msg"]
         print(f"="*30)
         print(msg)
         print(f"="*30)
