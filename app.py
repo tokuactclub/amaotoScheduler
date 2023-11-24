@@ -53,7 +53,7 @@ def callback():
 
 
 @app.route("/test")
-def reminder():
+def test():
     msg = "test"
     line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
     messages=TextSendMessage(text=msg)
