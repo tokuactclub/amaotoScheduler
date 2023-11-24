@@ -71,8 +71,10 @@ def reminder():
         line_bot_api.broadcast(messages=messages)#細かいの面倒くさいので、ブロードキャストで作成。想定はグループに追加するだけ。個人使用は考えない。
         return "ok"
     except Exception as e:
+        print(f"="*30)
         print(e)
-        return 00000
+        print(f"="*30)
+        return "Error"
 
 
 #使わないが、今後のために残す
