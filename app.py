@@ -17,19 +17,26 @@ from linebot.v3.webhooks import (
     MessageEvent,
     TextMessageContent
 )
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
 
 app = Flask(__name__)
 
-MY_CHANNEL_ACCESS_TOKEN = "" #環境変数に格納したい
-MY_CHANNEL_SECRET = ""
+MY_CHANNEL_ACCESS_TOKEN = "6dbx6i0CWo9N1J3n/QvyKgfEXXTLX/mO8LolIp5tsEPOeyATTO9OrZPMRipYxmVT5/NljDNyCzcRqLy+UB/wMkwcHwXu0fHPDLTRDbLO5E8hhSCaJqJ9QSOwOJBOYa2h7ASYDylQfCvRSvTLFoIrfgdB04t89/1O/w1cDnyilFU=" #環境変数に格納したい
+MY_CHANNEL_SECRET = "a34fcdb2b74c47b0529dfbebd67e187c"
 
 configuration = Configuration(access_token=MY_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(MY_CHANNEL_SECRET)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    msg ="try"
+    line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
+    messages=TextSendMessage(text=msg)
+    line_bot_api.broadcast(messages=messages)
+    #return 'Hello, World!'
 
+#line APIのハンドラーを作成
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -48,7 +55,15 @@ def callback():
 
     return 'OK'
 
+#メッセージを送信する。
+@app.route("/reminder",methods=["POST"])
+def reminder():
+    msg = request.form["msg"]
+    line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
+    messages=TextSendMessage(text=msg)
+    line_bot_api.broadcast(messages=messages)#細かいの面倒くさいので、ブロードキャストで作成。想定はグループに追加するだけ。個人使用は考えない。
 
+#使わないが、今後のために残す
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     with ApiClient(configuration) as api_client:
