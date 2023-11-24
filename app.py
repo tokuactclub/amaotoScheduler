@@ -66,7 +66,9 @@ def test():
 @app.route("/reminder",methods=["POST"])
 def reminder():
     try:
-        msg = json.loads(request.get_data())["msg"]
+        data= json.loads(request.get_data())
+        print(f"data:{data}")
+        msg = data["msg"]
         line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
         messages=TextSendMessage(text=msg)
         line_bot_api.broadcast(messages=messages)#細かいの面倒くさいので、ブロードキャストで作成。想定はグループに追加するだけ。個人使用は考えない。
