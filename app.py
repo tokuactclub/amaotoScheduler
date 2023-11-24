@@ -26,6 +26,9 @@ MY_CHANNEL_SECRET = ""
 configuration = Configuration(access_token=MY_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(MY_CHANNEL_SECRET)
 
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
 
 @app.route("/callback", methods=['POST'])
 def callback():
