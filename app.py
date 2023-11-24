@@ -30,11 +30,7 @@ handler = WebhookHandler(MY_CHANNEL_SECRET)
 
 @app.route('/')
 def hello_world():
-    msg ="try"
-    line_bot_api=LineBotApi(MY_CHANNEL_ACCESS_TOKEN)
-    messages=TextSendMessage(text=msg)
-    line_bot_api.broadcast(messages=messages)
-    #return 'Hello, World!'
+    return 'Hello, World!'
 
 #line APIのハンドラーを作成
 @app.route("/callback", methods=['POST'])
