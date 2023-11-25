@@ -5,6 +5,7 @@ import json
 def webhook(event,url):
     method = event.method
     url = event.url
+    print("headersType:"+type(event.headers))
     headers = {key: value for key, value in event.headers.items() if key != 'Host'} 
     body = event.json
 
