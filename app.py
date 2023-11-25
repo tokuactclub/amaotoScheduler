@@ -20,7 +20,7 @@ def webhook():
         headers['Content-Type'] = 'application/json;charset=utf-8'
         response = requests.request(
             method=method,
-            url='https://example.com/webhook',
+            url='https://gpt-bot.userlocal.jp/bot/e8449bb8',
             headers=headers,
             json=body
         )
