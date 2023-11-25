@@ -43,6 +43,8 @@ def main():
     msg : str = body["events"][0]["message"]["text"]
     if msg.startswith("あまおとくん"):
         webhook('https://gpt-bot.userlocal.jp/bot/e8449bb8')
+    
+    return "complete" ,200
         
 
 if __name__ == '__main__':
