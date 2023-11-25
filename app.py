@@ -7,7 +7,10 @@ app = Flask(__name__)
 def main():
     body=request.json
     {'destination': 'Ud686a6755685ed53407a76dd183cc82f', 'events': [{'type': 'message', 'message': {'type': 'text', 'id': '483373867147460721', 'quoteToken': 'zpxht856GpsRq9hDkQQHe69DEQ1yxu2KVKjGEW5vs4u2_KOEOPzaaJz0pTMJ7qsNnl-97gVyimImzJrsMYcdvGe5EGMYXsRjVcNS4gSvqRuGxMyY4eedM3GZk5fV8SqfntScw6R-L4uFf-2Na6mQzQ', 'text': 'さ'}, 'webhookEventId': '01HG4354B8PBWJH9AQ74AQKCAC', 'deliveryContext': {'isRedelivery': False}, 'timestamp': 1700944580461, 'source': {'type': 'user', 'userId': 'Ue99cbbb0fb4a6cb510c2ea5f343f6715'}, 'replyToken': 'fb40266f492d4e2e8963926a593c1914', 'mode': 'active'}]}
-    msg = body["events"][0]["message"]["text"]
+    msg : str = body["events"][0]["message"]["text"]
+    if msg.startswith("あまおとくん"):
+        pass
+    return
 @app.route('/webhook', methods=['POST'])
 def webhook():
     method = request.method
