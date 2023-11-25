@@ -5,8 +5,8 @@ import json
 def webhook(event,url):
     method = event.method
     url = event.url
-    headers = {key: value for key, value in event.headers if key != 'Host'}
-    body = json.dumps(event.json)
+    headers = {key: value for key, value in event.headers.items() if key != 'Host'} 
+    body = event.json
 
     print(f"Method: {method}\nType:{type(method)}")
     print(f"URL: {url}\nType:{type(url)}")
@@ -15,14 +15,12 @@ def webhook(event,url):
 
     try:
         # Reconstruct headers and forward the request
-        headers['Content-Type'] = 'application/json;charset=utf-8'
+        headers["Content-Type"] = "application/json;charset=utf-8"
         response = requests.request(
             method=method,
             url=url,
             headers=json.dumps(headers),
-            json={
-    "key": "value"
-}#body
+            json=body
         )
         print("end response")
 
