@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-@app.route("/",methods="post")
+@app.route("/",methods=['POST'])
 def main():
     return
 
