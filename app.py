@@ -23,8 +23,8 @@ import json
 
 app = Flask(__name__)
 
-MY_CHANNEL_ACCESS_TOKEN = "6dbx6i0CWo9N1J3n/QvyKgfEXXTLX/mO8LolIp5tsEPOeyATTO9OrZPMRipYxmVT5/NljDNyCzcRqLy+UB/wMkwcHwXu0fHPDLTRDbLO5E8hhSCaJqJ9QSOwOJBOYa2h7ASYDylQfCvRSvTLFoIrfgdB04t89/1O/w1cDnyilFU=" #環境変数に格納したい
-MY_CHANNEL_SECRET = "a34fcdb2b74c47b0529dfbebd67e187c"
+MY_CHANNEL_ACCESS_TOKEN = ""
+MY_CHANNEL_SECRET = ""
 
 configuration = Configuration(access_token=MY_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(MY_CHANNEL_SECRET)
@@ -82,10 +82,11 @@ def reminder():
         return f"{e}"
 
 
-#使わないが、今後のために残す
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     with ApiClient(configuration) as api_client:
+        #メッセージの解析
+        message = event.message.text
         line_bot_api = MessagingApi(api_client)
         line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
