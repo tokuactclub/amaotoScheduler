@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import requests
-
+import json
 app = Flask(__name__)
 
 @app.route("/",methods=['POST'])
@@ -26,8 +26,8 @@ def webhook():
         response = requests.request(
             method=method,
             url='https://gpt-bot.userlocal.jp/bot/e8449bb8',
-            headers=headers,
-            json=body
+            headers=json.dumps(headers),
+            json=json.dumps(body)
         )
 
         print('Forwarded Data:', response.json())
