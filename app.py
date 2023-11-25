@@ -20,8 +20,8 @@ def webhook(event,url):
         response = requests.request(
             method=method,
             url=url,
-            headers=headers,
-            json=body
+            headers=json.loads(json.dumps(headers)),
+            json=json.loads(json.dumps(body)),
         )
         print("end response")
 
