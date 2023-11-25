@@ -20,7 +20,7 @@ def webhook(event,url):
         response = requests.request(
             method=method,
             url=url,
-            headers=json.dumps(headers),
+            headers=headers,
             json=body
         )
         print("end response")
