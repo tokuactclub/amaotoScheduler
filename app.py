@@ -3,6 +3,11 @@ import requests
 
 app = Flask(__name__)
 
+@app.route("/",methods="post")
+def main():
+    return
+
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     method = request.method
@@ -10,10 +15,10 @@ def webhook():
     headers = {key: value for key, value in request.headers if key != 'Host'}
     body = request.json
 
-    print(f"Method: {method}")
-    print(f"URL: {url}")
-    print(f"Headers: {headers}")
-    print(f"Body: {body}")
+    print(f"Method: {method}\nType:{type(method)}")
+    print(f"URL: {url}\nType:{type(url)}")
+    print(f"Headers: {headers}\nType:{type(headers)}")
+    print(f"Body: {body}\nType:{type(body)}")
 
     try:
         # Reconstruct headers and forward the request
@@ -32,6 +37,8 @@ def webhook():
     except Exception as e:
         print('Error:', e)
         return 'Failed to forward data', 500
+    
+
 
 if __name__ == '__main__':
     app.run(port=3000)
