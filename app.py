@@ -5,7 +5,7 @@ import json
 def webhook(event,url):
     method = event.method
     url = event.url
-    headers = json.dumps({key: value for key, value in event.headers if key != 'Host'})
+    headers = {key: value for key, value in event.headers if key != 'Host'}
     body = json.dumps(event.json)
 
     print(f"Method: {method}\nType:{type(method)}")
@@ -19,7 +19,7 @@ def webhook(event,url):
         response = requests.request(
             method=method,
             url=url,
-            headers=headers,
+            headers=json.dumps(headers),
             json=body
         )
         print("end response")
