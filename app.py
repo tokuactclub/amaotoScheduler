@@ -6,7 +6,7 @@ def webhook(event,url):
     method = event.method
     url = event.url
     print(f"headersType:{type(event.headers)}")
-    headers = {key: value for key, value in event.headers.items() if key != 'Host'} 
+    headers = {key: value for key, value in dict(event.headers).items() if key != 'Host'} 
     body = event.json
 
     print(f"Method: {method}\nType:{type(method)}")
