@@ -23,7 +23,6 @@ def webhook(event,url):
             headers=json.loads(json.dumps(headers)),
             json=json.loads(json.dumps(body)),
         )
-        print("end response")
 
         print('Forwarded Data:', response)
         print('HTTP Status Code:', response.status_code)
@@ -45,7 +44,9 @@ def main():
     if msg.startswith("あまおとくん"):
         serviceURL = ['https://gpt-bot.userlocal.jp/bot/e8449bb8','https://script.google.com/macros/s/AKfycby-2Fmm9VymDqU5cEnzadScSkmCoosUKlxhcTgPD9KjNliMpiNA8cfLQO-ZLOrzP0MOxQ/exec']
         for url in serviceURL:
-            webhook(request,url)
+            print(f"START ACCESS TO {url}")
+            response = webhook(request,url)
+            print(f"END ACCESS TO {url}\nRESPONSE:{response}")
     
     return "complete" ,200
         
