@@ -2,6 +2,7 @@ from flask import Flask, request,jsonify
 import requests
 import json
 
+
 def webhook(event,url):
     method = event.method
     #url = event.url
@@ -10,7 +11,7 @@ def webhook(event,url):
     body = event.json
 
     print(f"Method: {method}\nType:{type(method)}")
-    print(f"URL: {url}\nType:{type(url)}")
+    print(f"URL : {url}\nType:{type(url)}")
     print(f"Headers: {headers}\nType:{type(headers)}")
     print(f"Body: {body}\nType:{type(body)}")
 
