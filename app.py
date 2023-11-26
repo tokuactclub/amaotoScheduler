@@ -25,7 +25,7 @@ def webhook(event,url):
         )
         print("end response")
 
-        print('Forwarded Data:', response.json())
+        print('Forwarded Data:', response)
         print('HTTP Status Code:', response.status_code)
 
         return 'Data forwarded successfully', 200
