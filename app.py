@@ -59,6 +59,7 @@ def main():
         match msg:
             case  "ama reminder":
                 body[function]="reminder"
+            
             case "ama reminder -0":
                 body[function]="reminderZero"
             case "ama schedule":
