@@ -56,16 +56,15 @@ def main():
         url = GAS_URL
         #冗長だが、一旦急場を凌ぐためこの書き方でいく
         function = "func"
-        match msg:
-            case  "ama reminder":
-                body[function]="reminder"
-            
-            case "ama reminder -0":
-                body[function]="reminderZero"
-            case "ama schedule":
-                body[function] = "schedule"
-            case _ :
-                return #error
+        if msg =="ama reminder":
+            body[function]="reminder"
+        elif msg == "ama reminder -0":
+            body[function]="reminderZero"
+        elif msg == "ama schedule":
+            body[function] = "schedule"
+        else:
+            return #error
+        
         print(f"START ACCESS TO {url}")
         response = webhook(request,url,body)
         print(f"END ACCESS TO {url}\nRESPONSE:{response}")
