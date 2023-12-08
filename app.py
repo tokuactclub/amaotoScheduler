@@ -53,17 +53,21 @@ def main():
             response = webhook(request,url)
             print(f"END ACCESS TO {url}\nRESPONSE:{response}")
     elif msg.startswith("ama"):
+        print("==============start cmd mode===============")
         url = GAS_URL
         #冗長だが、一旦急場を凌ぐためこの書き方でいく
         function = "func"
         if msg =="ama reminder":
+            print("mode:reminder")
             body[function]="reminder"
         elif msg == "ama reminder -0":
+            print("mode:reminderZero")
             body[function]="reminderZero"
         elif msg == "ama schedule":
+            print("mode:schedule")
             body[function] = "schedule"
         else:
-            return #error
+            return "error",500
         
         print(f"START ACCESS TO {url}")
         response = webhook(request,url,body)
