@@ -55,7 +55,7 @@ def main():
     elif msg.startswith("ama"):
         url = GAS_URL
         #冗長だが、一旦急場を凌ぐためこの書き方でいく
-        function = "function"
+        function = "func"
         if msg == "ama reminder":
             body[function]="reminder"
         elif msg == "ama schedule":
