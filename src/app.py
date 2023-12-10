@@ -1,7 +1,7 @@
 from flask import Flask, request
 import requests
 import json
-from larkParser import generateParser
+from src.larkParser import generateParser
 from lark import exceptions
 GAS_URL = 'https://script.google.com/macros/s/AKfycby-2Fmm9VymDqU5cEnzadScSkmCoosUKlxhcTgPD9KjNliMpiNA8cfLQO-ZLOrzP0MOxQ/exec'
 GPT_URL = 'https://gpt-bot.userlocal.jp/api/webhook/2c7e8d28'
