@@ -1,7 +1,8 @@
-from flask import Flask, request,jsonify
+from flask import Flask, request
 import requests
 import json
-
+from larkParser import generateParser
+from lark import exceptions
 GAS_URL = 'https://script.google.com/macros/s/AKfycby-2Fmm9VymDqU5cEnzadScSkmCoosUKlxhcTgPD9KjNliMpiNA8cfLQO-ZLOrzP0MOxQ/exec'
 GPT_URL = 'https://gpt-bot.userlocal.jp/api/webhook/2c7e8d28'
 
@@ -55,19 +56,15 @@ def main():
     elif msg.startswith("ama"):
         print("==============start cmd mode===============")
         url = GAS_URL
-        #冗長だが、一旦急場を凌ぐためこの書き方でいく
-        function = "func"
-        if msg =="ama reminder":
-            print("mode:reminder")
-            body[function]="reminder"
-        elif msg == "ama reminder -0":
-            print("mode:reminderZero")
-            body[function]="reminderZero"
-        elif msg == "ama schedule":
-            print("mode:schedule")
-            body[function] = "schedule"
-        else:
-            return "error",500
+        parser = generateParser()
+        try:
+            cmd,options = parser.parse(msg)
+        except exceptions as e:
+            print(e)
+            return e,400
+
+        body["func"] = cmd
+        body["options"] = options
         
         print(f"START ACCESS TO {url}")
         response = webhook(request,url,body)
@@ -79,4 +76,5 @@ def main():
         
 
 if __name__ == '__main__':
+    
     app.run(port=3000)

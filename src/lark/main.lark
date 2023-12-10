@@ -1,0 +1,17 @@
+?start: script
+
+script:"ama" " "+ cmd (" "+ option)*
+
+option: reminder_option
+
+reminder_option:"-" num
+
+cmd : CMD
+num:NUMBER
+
+
+
+CMD :"schedule"
+    |"reminder"
+
+%import common.NUMBER
