@@ -1,17 +1,28 @@
 ?start: script
 
-script:"ama" " "+ cmd (" "+ option)*
 
-option: reminder_option
+script:"ama" " "+ cmd
 
-reminder_option:"-" num
 
-cmd : CMD
+cmd:reminder
+    |schedule
+
+
+//コマンド
+reminder:REMINDER (" "+ reminder_option)*
+schedule:SCHEDULE (" "+ schedule_option)*
+
+//コマンド毎のオプション
+reminder_option:option_number->reminder_date
+schedule_option:option_number
+
+option_number:"-" num
+
+
+//読み込み
 num:NUMBER
+REMINDER:"reminder"
+SCHEDULE:"schedule"
 
-
-
-CMD :"schedule"
-    |"reminder"
 
 %import common.NUMBER

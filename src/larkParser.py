@@ -15,4 +15,4 @@ def generateParser():
 
 if __name__ == "__main__":
     parser = generateParser()
-    print(parser.parse("ama reminder"))
+    print(parser.parse("ama schedule"))
