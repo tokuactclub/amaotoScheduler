@@ -23,7 +23,7 @@ class MyTransformer(Transformer):
     #コマンド毎のオプション
     ##reminder
     def reminder_date(self,items):
-        self.options["date"] = items[0]
+        self.options["remindDate"] = [items[0]]
 
     ##schedule
 
