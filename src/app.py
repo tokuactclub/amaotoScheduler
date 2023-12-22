@@ -44,6 +44,7 @@ app = Flask(__name__)
 
 @app.route("/boot")
 def bootServer():
+    print("sercer boot")
     return "server boot"
 
 @app.route("/",methods=['POST'])
