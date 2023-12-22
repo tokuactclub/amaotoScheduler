@@ -42,6 +42,10 @@ def webhook(event,url,body=None):#bodyを少し変えたい場合body変数を�
 
 app = Flask(__name__)
 
+@app.route("/boot")
+def bootServer():
+    return "server boot"
+
 @app.route("/",methods=['POST'])
 def main():
     body=request.json
