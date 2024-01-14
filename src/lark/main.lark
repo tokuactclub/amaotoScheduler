@@ -18,7 +18,6 @@ delete:DELETE (" "+ event_id)
 reminder_option:option_number->reminder_date
     |option_list
     |option_all 
-    |option_delete
 schedule_option:option_number
 
 option_number:"-" num
