@@ -6,27 +6,36 @@ script:"ama" " "+ cmd
 
 cmd:reminder
     |schedule
+    |delete
 
 
 //コマンド
 reminder:REMINDER (" "+ reminder_option)*
 schedule:SCHEDULE (" "+ schedule_option)*
+delete:DELETE (" "+ event_id)
 
 //コマンド毎のオプション
 reminder_option:option_number->reminder_date
     |option_list
     |option_all 
+    |option_delete
 schedule_option:option_number
 
 option_number:"-" num
 option_list :"list"
 option_all:"all"
 
+//必要情報の定義
+ALPHANUM: /[a-zA-Z0-9]+/
+event_id:ALPHANUM+ "@google.com"
+num:NUMBER
+
 
 //読み込み
-num:NUMBER
 REMINDER:"reminder"
 SCHEDULE:"schedule"
+DELETE:"delete"
+
 
 
 %import common.NUMBER

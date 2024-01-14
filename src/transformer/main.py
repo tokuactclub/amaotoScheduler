@@ -23,6 +23,9 @@ class MyTransformer(Transformer):
     def schedule(self,items):
         return items[0].value
     
+    def delete(self,items):
+        return items[0].value
+    
     #コマンド毎のオプション
     ##reminder
     def reminder_date(self,items):
@@ -40,7 +43,9 @@ class MyTransformer(Transformer):
         self.options["all"]=True
         return
     
-    #よみこみ
-    
+    #必要情報の定義
+    def event_id(self,items):
+        self.options["id"]=str(items[0].value)+"@google.com"
+        return
     def num(self,items):
         return int(items[0].value)
