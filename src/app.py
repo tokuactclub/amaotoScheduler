@@ -61,7 +61,7 @@ def main():
     elif msg.startswith("ama"):
         print("==============start cmd mode===============")
         url = GAS_URL
-        parser = generateParser()
+        parser = generateParser(event=body["events"][0])
         try:
             cmd,options = parser.parse(msg)
         except exceptions as e:

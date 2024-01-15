@@ -2,11 +2,12 @@ from lark import Transformer
 
 class MyTransformer(Transformer):
 
-    def __init__(self, visit_tokens: bool = True) -> None:
+    def __init__(self, event,visit_tokens: bool = True ) -> None:
         self.options = {
             "list":False,
             "all":False
             }
+        self.e = event
         super().__init__(visit_tokens)
 
     def script(self,items):
@@ -25,6 +26,13 @@ class MyTransformer(Transformer):
     
     def delete(self,items):
         return items[0].value
+    
+    def mention(self,items):
+        userId = self.e["source"]["userId"]
+        self.options["userId"]=userId
+        return items[0].value
+    
+
     
     #コマンド毎のオプション
     ##reminder

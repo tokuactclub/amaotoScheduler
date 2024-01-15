@@ -7,12 +7,14 @@ script:"ama" " "+ cmd
 cmd:reminder
     |schedule
     |delete
+    |mention
 
 
 //コマンド
 reminder:REMINDER (" "+ reminder_option)*
 schedule:SCHEDULE (" "+ schedule_option)*
 delete:DELETE (" "+ event_id)
+mention:MENTION
 
 //コマンド毎のオプション
 reminder_option:option_number->reminder_date
@@ -34,6 +36,7 @@ num:NUMBER
 REMINDER:"reminder"
 SCHEDULE:"schedule"
 DELETE:"delete"
+MENTION:"mention"
 
 
 

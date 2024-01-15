@@ -1,14 +1,14 @@
 from lark import Lark
 from src.transformer.main import MyTransformer
 
-def generateParser():
+def generateParser(event):
     with open("src/lark/main.lark","rb") as file:
         grammar = file.read()
     grammar=grammar.decode()
 
     parser = Lark(grammar=grammar,
                 parser='lalr',
-                transformer=MyTransformer()
+                transformer=MyTransformer(event=event)
     )
    
     return parser
