@@ -8,14 +8,14 @@ cmd:reminder
     |schedule
     |delete
     |mention
-    |finished
+    |finish
 
 
 //コマンド
 reminder:REMINDER (" "+ reminder_option)*
 schedule:SCHEDULE (" "+ schedule_option)*
 delete:DELETE (" "+ event_id)
-delete:FINISH (" "+ event_id)
+finish:FINISH (" "+ event_id)
 mention:MENTION
 
 //コマンド毎のオプション
