@@ -26,6 +26,9 @@ class MyTransformer(Transformer):
     
     def delete(self,items):
         return items[0].value
+    def finish(self,items):
+
+        return items[0].value
     
     def mention(self,items):
         userId = self.e["source"]["userId"]
@@ -45,8 +48,6 @@ class MyTransformer(Transformer):
     #オプションの種類
     def option_number(self,items):
         return items[0]
-    def option_list(self,items):
-        self.options["list"]=True
     def option_all(self,items):
         self.options["all"]=True
         return
