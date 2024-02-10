@@ -18,12 +18,10 @@ mention:MENTION
 
 //コマンド毎のオプション
 reminder_option:option_number->reminder_date
-    |option_list
     |option_all 
 schedule_option:option_number
 
 option_number:"-" num
-option_list :"list"
 option_all:"all"
 
 //必要情報の定義
