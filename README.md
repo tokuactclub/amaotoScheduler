@@ -7,7 +7,7 @@
 4. ama finish id
 5. ama delete id
 
-＃＃　追加予定
+##　追加予定
 1. -を~に変更？(負の数に対応)
 2. ama practice
 3. ama schedule(変更)
