@@ -83,7 +83,6 @@ class LineTextMessage(object):
             mode_switch_button = self.xpath('//button[@id="__test__switchChatModeButton" and @class="btn btn-sm btn-outline-light"]')
             if mode_switch_button.text == "手動チャットで対応":
                 mode_switch_button.click()
-            finish_code = 1
             # 入力エリアのテキストエリアを取得
             
             textarea = self.xpath("//textarea[@class='editor-textarea p-2 overflow-y-auto text-break border-0' and @inputmode='text']")
