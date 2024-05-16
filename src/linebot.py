@@ -48,7 +48,7 @@ class LineTextMessage(object):
             print("send login get request")
 
             # 指定された<a>タグが表示されるまで待機
-            self.xpath_click("//a[@class='btn btn-lg btn-block btn-dark' and text()='Log in with business']")
+            self.xpath_click("//a[@class='btn btn-lg btn-block btn-dark' and text()='Log in with business account']")
             print("select business account")
 
             # メールアドレスとパスワード入力フィールドが表示されるまで待機
