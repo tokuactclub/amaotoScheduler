@@ -104,6 +104,7 @@ def linebot_textMessage():
             return "complete" ,200
         except Exception as e:
             print(f"Error ocurred:{e}")
+            return e,400
             do_count+=1
 
     return e ,400
