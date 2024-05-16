@@ -80,7 +80,7 @@ class LineTextMessage(object):
             self.driver.get(f"{self.BASE_URL}{self.bot_id}/chat/{chat_id}")
             print("selected chat group")
             #確実なアイドル時間を設ける
-            time.sleep(10)
+            time.sleep(3)
             #手動チャット応答に変更
             mode_switch_button = self.xpath('//button[@id="__test__switchChatModeButton"]')
             print("found mode_switch_button")
