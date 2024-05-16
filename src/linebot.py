@@ -82,8 +82,6 @@ class LineTextMessage(object):
             #手動チャット応答に変更
             mode_switch_button = self.xpath('//button[@id="__test__switchChatModeButton"]')
             print("found mode_switch_button")
-            text = mode_switch_button.text
-            print(text)
             if mode_switch_button.text == "手動チャットで対応":
                 mode_switch_button.click()
             print("click mode_switch_button")

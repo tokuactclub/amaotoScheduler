@@ -88,15 +88,25 @@ def linebot_textMessage():
     mail = os.getenv("LINE_OFFICIAL_ACCOUNT_MANAGER_EMAIL")
     password = os.getenv("LINE_OFFICIAL_ACCOUNT_MANAGER_PASSWORD")
     print(f"mail:{mail}\npassword:{password}")
-    try:
-        bot = LineTextMessage(bot_id,mail,password)
-        bot.text_message(body["message"],body["chat_id"])
+    do_count = 0
+    while do_count<3:
+        try:
+            bot = LineTextMessage(bot_id,mail,password)
+            break
+        except:
+            do_count +=1
+            
+    do_count = 0
+    while do_count <3:
+        try:
+            bot.text_message(body["message"],body["chat_id"])
 
-        return "complete" ,200
-    except Exception as e:
-        print(f"Error ocurred:{e}")
+            return "complete" ,200
+        except Exception as e:
+            print(f"Error ocurred:{e}")
+            do_count+=1
 
-        return "error" ,400
+    return "error" ,400
 
 
 if __name__ == '__main__':
