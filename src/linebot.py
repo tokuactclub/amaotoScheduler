@@ -31,6 +31,10 @@ class LineTextMessage(object):
         #chrome driverの作成
         service = Service(ChromeDriverManager().install())
         options = webdriver.ChromeOptions()
+        #render環境に合わせたオプションを追加
+        options.add_argument('--no-sandbox')
+        options.add_argument('--headless')
+        options.add_argument('--disable-dev-shm-usage')
         self.driver = webdriver.Chrome(service=service, options=options)
         
         #Official Account Manager にログイン
