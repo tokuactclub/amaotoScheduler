@@ -46,6 +46,9 @@ class LineTextMessage(object):
             print("login process start")
             self.driver.get(self.BASE_URL)
             print("send login get request")
+
+            time.sleep(1)
+            print(self.driver.page_source)
             
             # 指定された<a>タグが表示されるまで待機
             self.xpath_click("//a[@class='btn btn-lg btn-block btn-dark' and text()='ビジネスアカウントでログイン']")
