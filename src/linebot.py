@@ -78,11 +78,14 @@ class LineTextMessage(object):
     def text_message(self,message,chat_id):
         try:
             self.driver.get(f"{self.BASE_URL}{self.bot_id}/chat/{chat_id}")
+            print("selected chat group")
             #print(self.driver.page_source)
             #手動チャット応答に変更
             mode_switch_button = self.xpath('//button[@id="__test__switchChatModeButton" and @class="btn btn-sm btn-outline-light"]')
+            print(mode_switch_button.text)
             if mode_switch_button.text == "手動チャットで対応":
                 mode_switch_button.click()
+            print("click mode_switch_button")
             # 入力エリアのテキストエリアを取得
             
             textarea = self.xpath("//textarea[@class='editor-textarea p-2 overflow-y-auto text-break border-0' and @inputmode='text']")
