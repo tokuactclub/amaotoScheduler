@@ -43,7 +43,7 @@ class LineTextMessage(object):
 
     def login(self,mail_address,password):
         try:
-            print("login process stars")
+            print("login process start")
             self.driver.get(self.BASE_URL)
             print("send login get request")
             
