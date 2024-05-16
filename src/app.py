@@ -6,7 +6,6 @@ from lark import exceptions
 from .linebot import LineTextMessage
 import os
 import time
-import asyncio
 GAS_URL = 'https://script.google.com/macros/s/AKfycby-2Fmm9VymDqU5cEnzadScSkmCoosUKlxhcTgPD9KjNliMpiNA8cfLQO-ZLOrzP0MOxQ/exec'
 GPT_URL = 'https://gpt-bot.userlocal.jp/api/webhook/2c7e8d28'
 
@@ -83,20 +82,17 @@ def main():
     return "complete" ,200
 
 @app.route("/lineBot/textMessage",methods = ['POST'])
-async def linebot_textMessage():
+def linebot_textMessage():
     body = request.json
     bot_id = os.getenv("AMAOTO_BOT_ID")
     mail = os.getenv("LINE_OFFICIAL_ACCOUNT_MANAGER_EMAIL")
     password = os.getenv("LINE_OFFICIAL_ACCOUNT_MANAGER_PASSWORD")
     print(f"mail:{mail}\npassword:{password}")
-
     try:
-        async with LineTextMessage(bot_id, mail, password) as line_bot:
-            res = await line_bot.text_message(body["message"],body["chat_id"])
+        bot = LineTextMessage(bot_id,mail,password)
+        bot.text_message(body["message"],body["chat_id"])
 
-            if res:
-                pass
-            return "complete" ,200
+        return "complete" ,200
     except Exception as e:
         print(f"Error ocurred:{e}")
 
