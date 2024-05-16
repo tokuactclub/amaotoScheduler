@@ -95,7 +95,7 @@ def linebot_textMessage():
             break
         except:
             do_count +=1
-            
+
     do_count = 0
     while do_count <3:
         try:
@@ -106,7 +106,7 @@ def linebot_textMessage():
             print(f"Error ocurred:{e}")
             do_count+=1
 
-    return "error" ,400
+    return e ,400
 
 
 if __name__ == '__main__':

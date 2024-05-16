@@ -102,7 +102,7 @@ class LineTextMessage(object):
         except Exception as e:
             if mode_switch_button.text == "手動チャットを終了":
                 mode_switch_button.click()
-            raise Exception(f"failed to send message,error:{e}")
+            raise Exception(f"failed to send message,error:{e}\n{self.driver.page_source}")
 
     def xpath_click(self,path):
         button = self.xpath(path)
