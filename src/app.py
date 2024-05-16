@@ -3,7 +3,7 @@ import requests
 import json
 from src.larkParser import generateParser
 from lark import exceptions
-from linebot import LineTextMessage
+from .linebot import LineTextMessage
 import os
 import time
 GAS_URL = 'https://script.google.com/macros/s/AKfycby-2Fmm9VymDqU5cEnzadScSkmCoosUKlxhcTgPD9KjNliMpiNA8cfLQO-ZLOrzP0MOxQ/exec'
