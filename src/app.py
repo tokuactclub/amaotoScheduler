@@ -90,8 +90,12 @@ def linebot_textMessage():
     try:
         bot = LineTextMessage(bot_id,mail,password)
         bot.text_message(body["message"],body["chat_id"])
+
+        return "complete" ,200
     except Exception as e:
         print(f"Error ocurred:{e}")
+
+        return "error" ,400
 
 
 if __name__ == '__main__':
