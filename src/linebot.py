@@ -104,12 +104,12 @@ class LineTextMessage(object):
             raise Exception(f"failed to send message,error:{e}")
 
     def xpath_click(self,path):
-        button = WebDriverWait(self.driver,10).until(
+        button = WebDriverWait(self.driver,4).until(
             EC.presence_of_element_located((By.XPATH,path))
         )
         button.click()
 
     def xpath(self,path):
-        return WebDriverWait(self.driver,10).until(
+        return WebDriverWait(self.driver,4).until(
             EC.presence_of_element_located((By.XPATH,path))
         )
