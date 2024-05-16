@@ -92,9 +92,11 @@ async def linebot_textMessage():
 
     try:
         async with LineTextMessage(bot_id, mail, password) as line_bot:
-            await line_bot.text_message(body["message"],body["chat_id"])
+            res = await line_bot.text_message(body["message"],body["chat_id"])
 
-        return "complete" ,200
+            if res:
+                pass
+            return "complete" ,200
     except Exception as e:
         print(f"Error ocurred:{e}")
 
