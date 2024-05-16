@@ -81,7 +81,7 @@ class LineTextMessage(object):
             print("selected chat group")
             #print(self.driver.page_source)
             #手動チャット応答に変更
-            mode_switch_button = self.xpath('//button[@id="__test__switchChatModeButton" and @class="btn btn-sm btn-outline-light"]')
+            mode_switch_button = self.xpath('//button[@id="__test__switchChatModeButton"]')
             print(mode_switch_button.text)
             if mode_switch_button.text == "手動チャットで対応":
                 mode_switch_button.click()
