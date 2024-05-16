@@ -47,24 +47,21 @@ class LineTextMessage(object):
             self.driver.get(self.BASE_URL)
             print("send login get request")
 
-            time.sleep(1)
-            print(self.driver.page_source)
-            
             # 指定された<a>タグが表示されるまで待機
-            self.xpath_click("//a[@class='btn btn-lg btn-block btn-dark' and text()='ビジネスアカウントでログイン']")
+            self.xpath_click("//a[@class='btn btn-lg btn-block btn-dark' and text()='Log in with business']")
             print("select business account")
 
             # メールアドレスとパスワード入力フィールドが表示されるまで待機
-            email_input = self.xpath("//input[@name='email' and @placeholder='メールアドレス']")
+            email_input = self.xpath("//input[@name='email' and @placeholder='Email address']")
             email_input.send_keys(mail_address)
             print("input email")
             # メールアドレスとパスワードを入力
-            password_input = self.xpath("//input[@name='password' and @placeholder='パスワード']")
+            password_input = self.xpath("//input[@name='password' and @placeholder='Password']")
             password_input.send_keys(password)
             print("input password")
             
             # ログインボタンが表示されるまで待機
-            self.xpath_click("//button[@type='submit' and contains(text(), 'ログイン')]")
+            self.xpath_click("//button[@type='submit' and contains(text(), 'Log in')]")
             print("push login button")
             
             #tipsが表示されたら消す
