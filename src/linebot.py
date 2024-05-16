@@ -104,6 +104,7 @@ class LineTextMessage(object):
                 mode_switch_button.click()
             raise Exception(f"failed to send message,error:{e}\n{self.driver.page_source}")
 
+
     def xpath_click(self,path):
         button = self.xpath(path)
         button.click()
