@@ -65,7 +65,7 @@ class LineTextMessage(object):
             print("push login button")
             
             #tipsが表示されたら消す
-            time.sleep(3)#安定性に欠けるので、少し待機
+            time.sleep(10)#安定性に欠けるので、少し待機
             try:
                 # ログイン後のページの処理
                 self.xpath_click("//button[@type='button' and @class='btn btn-primary' and text()='OK']")
