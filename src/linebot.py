@@ -75,7 +75,7 @@ class LineTextMessage(object):
             raise Exception(f"failed to login,error:{e}")
         
 
-    def text_message(self,message,chat_id):
+    def text_message(self,message:str,chat_id):
         try:
             self.driver.get(f"{self.BASE_URL}{self.bot_id}/chat/{chat_id}")
             print("selected chat group")
@@ -92,7 +92,10 @@ class LineTextMessage(object):
             textarea = self.xpath("//textarea[@class='editor-textarea p-2 overflow-y-auto text-break border-0' and @inputmode='text']")
             # テキストを入力
             textarea.click()
-            textarea.send_keys(message)
+            for sentence in message.split("\n"):
+                textarea.send_keys(sentence)
+                textarea.send_keys(Keys.LEFT_SHIFT+Keys.ENTER)
+            textarea.send_keys(Keys.DELETE)
 
             # Enterキーを押して送信
             textarea.send_keys(Keys.ENTER)
