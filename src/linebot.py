@@ -97,10 +97,8 @@ class LineTextMessage(object):
             textarea.send_keys(Keys.ENTER)
             
             mode_switch_button.click()
-            input()
 
         except Exception as e:
-            input(f"error:{e}")
             if mode_switch_button.text == "手動チャットを終了":
                 mode_switch_button.click()
             raise Exception(f"failed to send message,error:{e}")
