@@ -14,3 +14,4 @@
 4. ama reminder set (date or num)
 5. ama schedule (auto or manual )
 6. ama help
+7. 
