@@ -81,9 +81,7 @@ def main():
     
     return "complete" ,200
 
-@app.route("/lineBot/textMessage",methods = ['POST'])
-def linebot_textMessage():
-    body = request.json
+def init_bot():
     bot_id = os.getenv("AMAOTO_BOT_ID")
     mail = os.getenv("LINE_OFFICIAL_ACCOUNT_MANAGER_EMAIL")
     password = os.getenv("LINE_OFFICIAL_ACCOUNT_MANAGER_PASSWORD")
@@ -95,6 +93,18 @@ def linebot_textMessage():
             break
         except:
             do_count +=1
+    try:
+        return bot
+    except:
+        return None
+
+
+@app.route("/lineBot/textMessage",methods = ['POST'])
+def linebot_textMessage():
+    body = request.json
+    bot = init_bot()
+    if not bot:
+        return "error",400
 
     do_count = 0
     while do_count <3:
@@ -104,10 +114,31 @@ def linebot_textMessage():
             return "complete" ,200
         except Exception as e:
             print(f"Error ocurred:{e}")
-            return e,400
             do_count+=1
 
     return e ,400
+
+@app.route("lineBot/get_chat_id",methods = ["POST"])
+def get_chat_id():
+    body = request.json
+    api_id = body["api_id"]
+    chat_name = body["chat_name"]
+    bot = init_bot()
+    if not bot :
+        return "error",400
+    
+    do_count = 0
+    while do_count < 3:
+        try:
+            chat_id = bot.get_chat_id(api_id,chat_name)
+            return chat_id,200
+        except Exception as e   :
+            print(f"Error ocurred:{e}")
+            do_count +=1
+    return e,400
+    
+    
+    
 
 
 if __name__ == '__main__':

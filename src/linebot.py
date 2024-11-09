@@ -107,6 +107,35 @@ class LineTextMessage(object):
                 mode_switch_button.click()
             raise Exception(f"failed to send message,error:{e}\n{self.driver.page_source}")
 
+    def get_chat_id(self,api_id:str,chat_name:str):
+        """LINE official account manager のchat_idを取得する
+
+        Args:
+            api_id (str):
+            chat_name (str): _description_
+        """
+        # uuidによるchatメッセージから絞り込み
+        textarea = self.xpath("//input[@id='chatListSearchInput']")
+        textarea.click()
+        textarea.send_keys(api_id)
+        for _ in range(2):
+            textarea.send_keys(Keys.TAB)
+            time.sleep(0.5)
+        textarea.send_keys(Keys.ENTER)
+
+        # 表示の更新を待機
+        WebDriverWait(self.driver,120).until(
+            EC.presence_of_element_located((By.XPATH,'//*[@id="__test__message_search_title"]'))
+        )
+        # 対象グループをクリック
+        self.xpath_click(f'//h6[text()="{chat_name}"]')
+
+        # 現在のURLからグループIDを取得
+        chat_id = self.driver.current_url.split("/")[-1]
+        return chat_id
+
+        
+
 
     def xpath_click(self,path):
         button = self.xpath(path)
