@@ -114,6 +114,8 @@ class LineTextMessage(object):
             api_id (str):
             chat_name (str): _description_
         """
+        self.driver.get(f"{self.BASE_URL}{self.bot_id}")
+        print("access chat home")
         # uuidによるchatメッセージから絞り込み
         textarea = self.xpath("//input[@id='chatListSearchInput']")
         textarea.click()
