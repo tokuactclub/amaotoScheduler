@@ -30,9 +30,7 @@ class MyTransformer(Transformer):
 
         return items[0].value
     
-    def mention(self,items):
-        userId = self.e["source"]["userId"]
-        self.options["userId"]=userId
+    def addGroup(self,items):
         return items[0].value
     
 
