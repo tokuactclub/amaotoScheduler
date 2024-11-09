@@ -118,7 +118,7 @@ def linebot_textMessage():
 
     return e ,400
 
-@app.route("lineBot/get_chat_id",methods = ["POST"])
+@app.route("/lineBot/get_chat_id",methods = ["POST"])
 def get_chat_id():
     body = request.json
     api_id = body["api_id"]
