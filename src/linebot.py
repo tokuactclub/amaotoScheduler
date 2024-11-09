@@ -117,19 +117,22 @@ class LineTextMessage(object):
         # uuidによるchatメッセージから絞り込み
         textarea = self.xpath("//input[@id='chatListSearchInput']")
         textarea.click()
+        print("clicked search area")
         textarea.send_keys(api_id)
         for _ in range(2):
             textarea.send_keys(Keys.TAB)
             time.sleep(0.5)
         textarea.send_keys(Keys.ENTER)
+        print("start search...")
 
         # 表示の更新を待機
         WebDriverWait(self.driver,120).until(
             EC.presence_of_element_located((By.XPATH,'//*[@id="__test__message_search_title"]'))
         )
+        print("end search")
         # 対象グループをクリック
         self.xpath_click(f'//h6[text()="{chat_name}"]')
-
+        print("clicked group chat")
         # 現在のURLからグループIDを取得
         chat_id = self.driver.current_url.split("/")[-1]
         return chat_id
