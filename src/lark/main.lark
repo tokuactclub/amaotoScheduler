@@ -9,6 +9,7 @@ cmd:reminder
     |delete
     |mention
     |finish
+    |add_group
 
 
 //コマンド
@@ -17,6 +18,7 @@ schedule:SCHEDULE (" "+ schedule_option)*
 delete:DELETE (" "+ event_id)
 finish:FINISH (" "+ event_id)
 mention:MENTION
+add_group:ADDGROUP
 
 //コマンド毎のオプション
 reminder_option:option_number->reminder_date
@@ -38,6 +40,7 @@ SCHEDULE:"schedule"
 DELETE:"delete"
 FINISH:"finish"
 MENTION:"mention"
+ADDGROUP:"addGroup"
 
 
 
