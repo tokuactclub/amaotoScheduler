@@ -30,7 +30,7 @@ class MyTransformer(Transformer):
 
         return items[0].value
     
-    def addGroup(self,items):
+    def add_group(self,items):
         return items[0].value
     
 
