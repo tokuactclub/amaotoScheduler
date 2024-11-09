@@ -116,7 +116,7 @@ def linebot_textMessage():
             print(f"Error ocurred:{e}")
             do_count+=1
 
-    return e ,400
+    return "error" ,400
 
 @app.route("/lineBot/get_chat_id",methods = ["POST"])
 def get_chat_id():
@@ -135,7 +135,7 @@ def get_chat_id():
         except Exception as e   :
             print(f"Error ocurred:{e}")
             do_count +=1
-    return e,400
+    return "error",400
     
     
     
