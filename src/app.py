@@ -128,7 +128,7 @@ def get_chat_id():
         return "error",400
     
     do_count = 0
-    while do_count < 3:
+    while do_count < 1:
         try:
             chat_id = bot.get_chat_id(api_id,chat_name)
             return chat_id,200
