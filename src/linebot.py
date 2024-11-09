@@ -118,6 +118,9 @@ class LineTextMessage(object):
         print("access chat home")
         # uuidによるchatメッセージから絞り込み
         textarea = self.xpath("//input[@id='chatListSearchInput']")
+        if not textarea:
+            print("couldn't find text area")
+            return "miss"
         textarea.click()
         print("clicked search area")
         textarea.send_keys(api_id)
