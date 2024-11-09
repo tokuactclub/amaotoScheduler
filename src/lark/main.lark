@@ -7,7 +7,6 @@ script:"ama" " "+ cmd
 cmd:reminder
     |schedule
     |delete
-    |mention
     |finish
     |add_group
 
@@ -17,7 +16,6 @@ reminder:REMINDER (" "+ reminder_option)*
 schedule:SCHEDULE (" "+ schedule_option)*
 delete:DELETE (" "+ event_id)
 finish:FINISH (" "+ event_id)
-mention:MENTION
 add_group:ADDGROUP
 
 //コマンド毎のオプション
@@ -39,7 +37,6 @@ REMINDER:"reminder"
 SCHEDULE:"schedule"
 DELETE:"delete"
 FINISH:"finish"
-MENTION:"mention"
 ADDGROUP:"addGroup"
 
 
