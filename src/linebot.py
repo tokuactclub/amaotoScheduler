@@ -131,10 +131,7 @@ class LineTextMessage(object):
         textarea.click()
         print("clicked search area")
         textarea.send_keys(api_id)
-        for _ in range(2):
-            textarea.send_keys(Keys.TAB)
-            time.sleep(0.5)
-        textarea.send_keys(Keys.ENTER)
+        self.xpath_click("//i[@class='las la-search mr-1']")
         print("start search...")
 
         # 表示の更新を待機
