@@ -2,3 +2,4 @@ demo.html
 .env
 src/test/chromedriver
 src/__pycache__
+src/test/test.html

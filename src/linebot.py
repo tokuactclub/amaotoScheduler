@@ -78,6 +78,12 @@ class LineTextMessage(object):
                 self.xpath_click("//button[@type='button' and @class='btn btn-primary' and text()='OK']")
             except:
                 pass
+            
+            # reCaptureに引っかかってるかを、特定の要素が表示されているかで確かめる
+            try:
+                textarea = self.xpath("//input[@id='chatListSearchInput']")
+            except Exception as e:
+                raise Exception("reCapture disturbed")
         except Exception as e:
             raise Exception(f"failed to login,error:{e}")
         
@@ -121,7 +127,6 @@ class LineTextMessage(object):
             api_id (str):
             chat_name (str): _description_
         """
-        raise Exception("test")
         self.driver.get(f"{self.BASE_URL}{self.bot_id}")
         print("access chat home")
         # uuidによるchatメッセージから絞り込み
