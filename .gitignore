@@ -1,1 +1,4 @@
 demo.html
+.env
+src/test/chromedriver
+src/__pycache__

@@ -125,7 +125,6 @@ def get_chat_id():
     api_id = body["api_id"]
     chat_name = body["chat_name"]
     bot = init_bot()
-    return "complete" ,200
     if not bot :
         return "error",400
     
