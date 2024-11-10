@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 class LineTextMessage(object):
-    def __init__(self,bot_id,mail_address,password) -> None:
+    def __init__(self,bot_id,mail_address,password,debug=False) -> None:
         """
         LINE Official Acount Managerを利用しbotからテキストメッセージを送信する
         
@@ -22,20 +22,27 @@ class LineTextMessage(object):
             botに対してアクセス権を持つユーザーである必要がある
         password:str
             ログインするユーザーのパスワード
-
+        debug:bool
+            ローカルで動作確認する時のためのオプション
         """
         #変数の初期化
         self.bot_id = bot_id
         self.BASE_URL  = "https://chat.line.biz/"
 
         #chrome driverの作成
-        service = Service(ChromeDriverManager().install())
-        options = webdriver.ChromeOptions()
-        #render環境に合わせたオプションを追加
-        options.add_argument('--no-sandbox')
-        options.add_argument('--headless')
-        options.add_argument('--disable-dev-shm-usage')
-        self.driver = webdriver.Chrome(service=service, options=options)
+        if not debug:
+            service = Service(ChromeDriverManager().install())
+            options = webdriver.ChromeOptions()
+            #render環境に合わせたオプションを追加
+            options.add_argument('--no-sandbox')
+            options.add_argument('--headless')
+            options.add_argument('--disable-dev-shm-usage')
+            self.driver = webdriver.Chrome(service=service, options=options)
+        else:
+            options = webdriver.ChromeOptions()
+            options.add_argument('--lang=en')
+            options.add_experimental_option('prefs', {'intl.accept_languages': 'en'})
+            self.driver = webdriver.Chrome(options=options)
         
         #Official Account Manager にログイン
         self.login(mail_address,password)
