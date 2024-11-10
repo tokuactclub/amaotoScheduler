@@ -135,6 +135,8 @@ def get_chat_id():
             return chat_id,200
         except Exception as e   :
             print(f"Error ocurred:{e}")
+            html = bot.driver.page_source
+            return html,400
             do_count +=1
     return "error",400
     
