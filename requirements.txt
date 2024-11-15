@@ -5,3 +5,5 @@ asyncio==3.4.3
 lark==1.1.8
 selenium==4.11.2
 webdriver-manager
+playwright==1.48.0
+playwright-stealth == 1.0.6

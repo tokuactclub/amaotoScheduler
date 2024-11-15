@@ -1,5 +1,10 @@
 # amaotoScheduler
 
+# 起動の方法
+```
+playwright install   
+```
+を実行後起動する必要がある。鯖においてスクリプト内でどう処理するかが課題。
 ## コマンド
 1. ama reminder -num
 2. ama schedule
